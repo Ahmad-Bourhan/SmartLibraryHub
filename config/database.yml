@@ -1,26 +1,20 @@
-# Default settings for production (PostgreSQL)
 default: &default
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: db/development.sqlite3
+
+test:
+  <<: *default
+  database: db/test.sqlite3
+
+production:
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-
-# Development environment uses SQLite (easier on Windows)
-development:
-  adapter: sqlite3
-  database: db/development.sqlite3
-  pool: 5
-  timeout: 5000
-
-# Test environment also uses SQLite
-test:
-  adapter: sqlite3
-  database: db/test.sqlite3
-  pool: 5
-  timeout: 5000
-
-# Production environment on Render uses PostgreSQL
-production:
-  <<: *default
   database: smartlibraryhub_db
   username: smartlibraryhub_db_user
   password: <%= ENV['DB_PASSWORD'] %>
