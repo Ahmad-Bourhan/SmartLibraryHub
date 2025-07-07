@@ -1,0 +1,57 @@
+<div class="container my-5">
+  <div class="text-center mb-5">
+    <h1 class="fw-bold text-primary">📊 Library Statistics</h1>
+    <p class="text-muted">Insights into how your library is being used.</p>
+  </div>
+
+  <!-- Borrowings Per Day -->
+  <div class="card shadow-sm mb-5">
+    <div class="card-header bg-info text-white fw-semibold">
+      📅 Borrowings Per Day
+    </div>
+    <div class="card-body">
+      <% if @daily_borrowings.present? %>
+        <%= line_chart @daily_borrowings,
+              xtitle: "Date",
+              ytitle: "Number of Borrowings",
+              library: { tension: 0.3 } %>
+      <% else %>
+        <p class="text-muted">📉 No borrowings data available yet.</p>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Most Borrowed Books -->
+  <div class="card shadow-sm mb-5">
+    <div class="card-header bg-primary text-white fw-semibold">
+      📘 Most Borrowed Books
+    </div>
+    <div class="card-body">
+      <% if @top_books.present? %>
+        <%= column_chart @top_books, height: "300px", library: {
+              title: { text: "Top 5 Borrowed Books", fontSize: 18 },
+              vAxis: { title: "Times Borrowed" },
+              hAxis: { title: "Book Title" }
+            } %>
+      <% else %>
+        <p class="text-muted">📚 No borrowing data for books yet.</p>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- User Role Distribution -->
+  <div class="card shadow-sm mb-5">
+    <div class="card-header bg-warning text-dark fw-semibold">
+      👤 User Role Distribution
+    </div>
+    <div class="card-body">
+      <% if @user_roles.present? %>
+        <%= pie_chart @user_roles, height: "300px", library: {
+              title: { text: "Users by Role", fontSize: 18 }
+            } %>
+      <% else %>
+        <p class="text-muted">🙋‍♂️ No users available yet.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

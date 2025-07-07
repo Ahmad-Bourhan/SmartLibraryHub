@@ -1,0 +1,15 @@
+one:
+  user: user
+  book: one
+  borrowed_on: 2025-06-24
+  due_on: 2025-07-01
+  returned_on: 2025-06-30
+  extended: false
+
+two:
+  user: admin
+  book: two
+  borrowed_on: 2025-06-20
+  due_on: 2025-06-27
+  returned_on: 2025-06-27
+  extended: true

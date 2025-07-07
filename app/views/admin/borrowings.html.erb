@@ -1,0 +1,53 @@
+<% content_for :title, "Admin Borrowing Dashboard" %>
+
+<h1 class="text-center text-primary mb-5">📊 Admin - Borrowing Overview</h1>
+
+<h2 class="text-danger">📚 All Active Borrowings</h2>
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Book Title</th>
+      <th>User</th>
+      <th>Borrowed At</th>
+      <th>Due Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @all_borrowings.each do |b| %>
+      <tr>
+        <td><%= b.book.title %></td>
+        <td><%= b.user.first_name %> <%= b.user.last_name %> (<%= b.user.email %>)</td>
+        <td><%= b.created_at.strftime("%B %d, %Y") %></td>
+        <td><%= b.due_date.strftime("%B %d, %Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2 class="mt-5 text-warning">⚠️ Overdue Borrowings</h2>
+<% if @overdue_borrowings.any? %>
+  <table class="table table-bordered table-danger">
+    <thead>
+      <tr>
+        <th>Book Title</th>
+        <th>User</th>
+        <th>Borrowed At</th>
+        <th>Due Date</th>
+        <th>Days Late</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @overdue_borrowings.each do |b| %>
+        <tr>
+          <td><%= b.book.title %></td>
+          <td><%= b.user.first_name %> <%= b.user.last_name %> (<%= b.user.email %>)</td>
+          <td><%= b.created_at.strftime("%B %d, %Y") %></td>
+          <td><%= b.due_date.strftime("%B %d, %Y") %></td>
+          <td><%= (Date.today - b.due_date).to_i %> days</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="text-success">✅ No overdue borrowings.</p>
+<% end %>

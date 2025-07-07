@@ -1,0 +1,30 @@
+<%= form_with(model: book, local: true) do |form| %>
+  <div class="card shadow p-4 mb-4 mx-auto" style="max-width: 500px;">
+    <h3 class="text-center mb-4"><%= book.new_record? ? "New Book" : "Edit Book" %></h3>
+
+    <div class="mb-3">
+      <%= form.label :title, class: "form-label" %>
+      <%= form.text_field :title, class: "form-control", placeholder: "Enter book title" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :author, class: "form-label" %>
+      <%= form.text_field :author, class: "form-control", placeholder: "Enter author's name" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, class: "form-control", rows: 3, placeholder: "Enter description" %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label :pages, class: "form-label" %>
+      <%= form.number_field :pages, class: "form-control", min: 1, placeholder: "Enter number of pages" %>
+    </div>
+
+    <div class="text-center">
+      <%= form.submit class: "btn btn-primary" %>
+      <%= link_to "Cancel", books_path, class: "btn btn-secondary ms-2" %>
+    </div>
+  </div>
+<% end %>

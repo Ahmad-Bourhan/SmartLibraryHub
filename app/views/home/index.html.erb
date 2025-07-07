@@ -1,0 +1,49 @@
+<!-- Welcome Section -->
+<div class="text-center bg-light p-4 rounded mb-4">
+  <h1>🏠 Welcome to <strong>Smart Library Hub</strong></h1>
+  <% if user_signed_in? %>
+    <p>👋 Hello, <strong><%= current_user.first_name %></strong>! Glad to have you back.</p>
+  <% end %>
+  <%= link_to "📚 Browse Books", books_path, class: "btn btn-primary mt-2" %>
+</div>
+
+<!-- Statistics Section -->
+<div class="text-center mb-4">
+  📖 Total Books: <strong><%= @books_count %></strong> |
+  👥 Registered Users: <strong><%= @users_count %></strong>
+</div>
+
+<!-- Why Smart Library Hub -->
+<h2 class="text-center my-5">✨ Why Smart Library Hub?</h2>
+<div class="row text-center">
+  <div class="col-md-4">
+    <h4>📘 Easy Access to Books</h4>
+    <p>Search, browse, and borrow your favorite books in seconds.</p>
+  </div>
+  <div class="col-md-4">
+    <h4>📊 Track Your Borrowings</h4>
+    <p>Manage your borrowing history, extensions, and returns easily.</p>
+  </div>
+  <div class="col-md-4">
+    <h4>👨‍💼 Admin Dashboard</h4>
+    <p>Admins can monitor statistics, manage users, and control books.</p>
+  </div>
+</div>
+
+<!-- Top Borrowed Books -->
+<hr class="my-5">
+<h2 class="text-center mb-4">📚 Top Reading Books</h2>
+
+<div class="row justify-content-center">
+  <% @top_books.each do |book| %>
+    <div class="col-md-4 mb-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title"><%= book.title %></h5>
+          <p class="card-text"><%= truncate(book.description, length: 100) %></p>
+        </div>
+        
+      </div>
+    </div>
+  <% end %>
+</div>
