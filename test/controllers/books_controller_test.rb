@@ -3,7 +3,7 @@ require "test_helper"
 class BooksControllerTest < ActionDispatch::IntegrationTest
   setup do
     @book = books(:one)
-    @user = users(:admin) 
+    @user = users(:admin)
     sign_in @user
   end
 
@@ -18,7 +18,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create book" do
-    assert_difference('Book.count') do
+    assert_difference("Book.count") do
       post books_path, params: {
         book: {
           title: "New Book",
@@ -51,7 +51,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy book" do
-    assert_difference('Book.count', -1) do
+    assert_difference("Book.count", -1) do
       delete book_path(@book)
     end
     assert_redirected_to books_path

@@ -1,4 +1,4 @@
-require 'prawn'
+require "prawn"
 
 class BorrowingsController < ApplicationController
   before_action :authenticate_user!

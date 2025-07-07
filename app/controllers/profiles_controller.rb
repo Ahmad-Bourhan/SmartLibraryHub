@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update]
-  before_action :authorize_admin!, only: [:index]
+  before_action :set_user, only: [ :show, :edit, :update ]
+  before_action :authorize_admin!, only: [ :index ]
 
   # Show the current user's profile
   def show

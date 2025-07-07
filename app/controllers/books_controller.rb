@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_book, only: %i[show edit update destroy]
-  after_action :verify_authorized, except: [:index, :show]
+  after_action :verify_authorized, except: [ :index, :show ]
 
   def index
   if params[:query].present?

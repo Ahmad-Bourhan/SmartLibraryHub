@@ -24,9 +24,6 @@ class Admin::StatisticsController < ApplicationController
       else "Unknown"
       end
     end
-
-
-
 end
 
 

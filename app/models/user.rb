@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
 
   after_initialize :set_default_role, if: :new_record?
-# User relationships
+  # User relationships
   has_many :borrowings, dependent: :destroy
   has_many :borrowed_books, through: :borrowings, source: :book
 
