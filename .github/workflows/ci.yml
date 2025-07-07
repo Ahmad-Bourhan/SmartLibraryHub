@@ -95,10 +95,8 @@ jobs:
       - name: Make bin files executable
         run: chmod +x bin/*
 
-      - name: Set up PostgreSQL config for test environment
-        run: |
-          cp config/database.yml.github config/database.yml
-          bundle exec rails db:create db:schema:load
+      - name: Set up database for test environment
+        run: bundle exec rails db:create db:schema:load
 
       - name: Run tests
         env:
