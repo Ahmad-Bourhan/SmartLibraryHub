@@ -96,6 +96,9 @@ jobs:
         run: chmod +x bin/*
 
       - name: Set up database for test environment
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:password@localhost:5432/test_db
         run: bundle exec rails db:create db:schema:load
 
       - name: Run tests
