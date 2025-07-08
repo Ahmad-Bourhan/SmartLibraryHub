@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Core framework for building the application
-gem "rails", "~> 7.2.2", ">= 7.2.2.1"
+gem "rails", "~> 8.0.2"
 
 # Asset pipeline support for managing CSS, JS, and images
 gem "sprockets-rails"
