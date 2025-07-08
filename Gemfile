@@ -1,69 +1,71 @@
 source "https://rubygems.org"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+# Core framework for building the application
 gem "rails", "~> 7.2.2", ">= 7.2.2.1"
-# The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
+
+# Asset pipeline support for managing CSS, JS, and images
 gem "sprockets-rails"
-# Use the Puma web server [https://github.com/puma/puma]
+
+# Web server for running the application
 gem "puma", ">= 5.0"
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
+
+# Enables importmap to manage JavaScript modules without Node.js
 gem "importmap-rails"
-# Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
+
+# Enables Turbo Drive and Frames for faster page transitions
 gem "turbo-rails"
-# Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
+
+# Stimulus JS framework for adding interactivity
 gem "stimulus-rails"
-# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+
+# Helps create and manage JSON APIs
 gem "jbuilder"
-# Use Redis adapter to run Action Cable in production
-# gem "redis", ">= 4.0.1"
 
-# Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
-# gem "kredis"
+# PostgreSQL database adapter (used in production)
+gem "pg"
 
-# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ windows jruby ]
-
-# Reduces boot times through caching; required in config/boot.rb
-gem "bootsnap", require: false
-
-# Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
-
+# Devise is used for user authentication (sign up, login, etc.)
 gem "devise"
+
+# Pundit is used for authorization based on user roles
 gem "pundit"
+
+# Prawn is used for generating PDF documents
 gem "prawn"
+
+# Chartkick is used to display charts (bar, pie, etc.)
 gem "chartkick"
 
-# Production uses PostgreSQL (for Render)
-group :production do
-  gem "pg"
-end
+# Provides time zone data support for Windows environments
+gem "tzinfo-data", platforms: %i[ windows jruby ]
 
-# Development & test uses SQLite3 locally
+# Improves boot performance by caching expensive operations
+gem "bootsnap", require: false
+
+# Gems needed only in development and testing environments
 group :development, :test do
-  # Use sqlite3 as the database for Active Record
-  gem "sqlite3", ">= 1.4"
+  # SQLite3 is used as the local database in development and testing
+  gem "sqlite3", "~> 1.4"
 
-  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  # Debugging tool for stepping through code
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  # Scans the code for common security vulnerabilities
   gem "brakeman", require: false
 
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  # Enforces Rails code style conventions
   gem "rubocop-rails-omakase", require: false
 end
 
+# Gems needed only in development
 group :development do
-  # Use console on exceptions pages [https://github.com/rails/web-console]
+  # Allows interactive console in the browser on errors
   gem "web-console"
 end
 
+# Gems needed only in testing
 group :test do
-  # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  # Enables system testing by simulating user interactions
   gem "capybara"
   gem "selenium-webdriver"
 end
