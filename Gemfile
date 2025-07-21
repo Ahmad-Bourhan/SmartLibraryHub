@@ -45,7 +45,7 @@ gem "bootsnap", require: false
 # Gems needed only in development and testing environments
 group :development, :test do
   # SQLite3 is used as the local database in development and testing
-  gem "sqlite3", "~> 1.4"
+  gem "sqlite3", "~> 2.7"
 
   # Debugging tool for stepping through code
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
